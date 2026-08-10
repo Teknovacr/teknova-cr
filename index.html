@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teknova-CR: automatización industrial, PLC, SCADA, HMI y mantenimiento eléctrico.">
+  <title>Teknova-CR | Automatización Industrial</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="navbar container">
+      <a href="#inicio" class="logo">
+        <img src="images/logo.png" alt="Logo de Teknova-CR">
+        <span>Teknova-CR</span>
+      </a>
+      <button id="menuButton" class="menu-button" type="button" aria-label="Abrir menú">☰</button>
+      <nav id="navigation" class="navigation">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="slide active"><img src="images/electrical_Panel.jpg" alt="Panel eléctrico industrial"></div>
+      <div class="slide"><img src="images/PLC.jpg" alt="PLC industrial"></div>
+      <div class="slide"><img src="images/HMI.jpg" alt="Interfaz HMI"></div>
+      <div class="slide"><img src="images/drive_motion.jpg" alt="Sistema de movimiento industrial"></div>
+      <div class="slide"><img src="images/machine.jpg" alt="Maquinaria industrial"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span>Automatización y control industrial</span>
+        <h1>Soluciones integrales en automatización industrial</h1>
+        <p>Especialistas en PLC, SCADA, HMI, mantenimiento eléctrico industrial y software empresarial.</p>
+        <a class="btn" href="#servicios">Conocer servicios</a>
+        <a class="btn btn-outline" href="#contacto">Solicitar información</a>
+      </div>
+      <button id="previousSlide" class="slider-button previous" type="button" aria-label="Imagen anterior">&#10094;</button>
+      <button id="nextSlide" class="slider-button next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+      <div class="slider-dots">
+        <button class="slider-dot active" data-slide="0" aria-label="Imagen 1"></button>
+        <button class="slider-dot" data-slide="1" aria-label="Imagen 2"></button>
+        <button class="slider-dot" data-slide="2" aria-label="Imagen 3"></button>
+        <button class="slider-dot" data-slide="3" aria-label="Imagen 4"></button>
+        <button class="slider-dot" data-slide="4" aria-label="Imagen 5"></button>
+      </div>
+    </section>
+
+    <section id="nosotros" class="section container">
+      <h2>¿Quiénes somos?</h2>
+      <div class="two-columns">
+        <div>
+          <p>En Teknova-CR brindamos soluciones especializadas en automatización industrial, soporte técnico eléctrico y modernización de procesos productivos.</p>
+          <p>Nuestro objetivo es incrementar la productividad, reducir tiempos de parada y optimizar los sistemas de control industrial.</p>
+        </div>
+        <img class="about-image" src="images/electrical_Panel.jpg" alt="Panel eléctrico de automatización">
+      </div>
+    </section>
+
+    <section id="servicios" class="section light">
+      <div class="container">
+        <h2>Nuestros servicios</h2>
+        <div class="grid services">
+          <article><h3>Programación PLC</h3><p>Siemens, Mitsubishi y Allen-Bradley.</p></article>
+          <article><h3>SCADA y HMI</h3><p>Visualización, monitoreo y supervisión de procesos.</p></article>
+          <article><h3>Automatización</h3><p>Modernización y optimización de procesos industriales.</p></article>
+          <article><h3>Mantenimiento eléctrico</h3><p>Mantenimiento preventivo, correctivo y diagnóstico.</p></article>
+          <article><h3>Capacitación técnica</h3><p>Formación personalizada en PLC, HMI y SCADA.</p></article>
+          <article><h3>Software empresarial</h3><p>Aplicaciones, macros y soluciones digitales.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologias" class="section technologies">
+      <div class="container"><h2>Tecnologías especializadas</h2>
+        <div class="grid tech-grid"><span>Siemens TIA Portal</span><span>Mitsubishi GX Works</span><span>Studio 5000</span><span>WinCC</span><span>FactoryTalk</span><span>SCADA</span><span>HMI</span><span>Excel VBA</span></div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section container">
+      <h2>Proyectos y equipos</h2>
+      <div class="grid gallery">
+        <img src="images/breaker.jpg" alt="Breaker industrial">
+        <img src="images/motor_ac.jpg" alt="Motor AC">
+        <img src="images/VFD.jpg" alt="Variador de frecuencia">
+        <img src="images/remote_io.jpg" alt="Módulo de entradas y salidas remotas">
+        <img src="images/soft_starter.jpg" alt="Arrancador suave">
+        <img src="images/codigo_fuente.jpg" alt="Código de software industrial">
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact">
+      <div class="container"><h2>Contáctenos</h2><p>Correo: info@teknova-cr.com</p><p>Teléfono: +506 6004-8547</p><a class="btn whatsapp-link" href="https://wa.me/50660048547" target="_blank" rel="noopener noreferrer">Enviar mensaje por WhatsApp</a></div>
+    </section>
+  </main>
+
+  <footer><p>© <span id="currentYear"></span> Teknova-CR | Automatización Industrial</p></footer>
+  <a class="whatsapp" href="https://wa.me/50660048547" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+  <script src="js/script.js"></script>
+</body>
+</html>

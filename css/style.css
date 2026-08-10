@@ -1,0 +1,943 @@
+/* =========================================================
+   TEKNOVA-CR
+   ARCHIVO: css/style.css
+========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES DE COLOR Y TAMAÑO
+========================================================= */
+
+:root {
+    --primary-color: #0d47a1;
+    --primary-light: #1976d2;
+    --primary-dark: #072d68;
+
+    --secondary-color: #00a8e8;
+    --dark-color: #071b2f;
+    --darker-color: #041426;
+
+    --text-color: #263445;
+    --muted-color: #64748b;
+
+    --light-color: #f3f6fa;
+    --white-color: #ffffff;
+
+    --border-color: #dce4ee;
+    --whatsapp-color: #25d366;
+
+    --header-height: 76px;
+
+    --small-shadow: 0 6px 20px rgba(7, 27, 47, 0.08);
+    --medium-shadow: 0 12px 32px rgba(7, 27, 47, 0.14);
+
+    --border-radius: 12px;
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+   2. REINICIO GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    min-height: 100vh;
+
+    color: var(--text-color);
+    background-color: var(--white-color);
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+section {
+    scroll-margin-top: var(--header-height);
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* =========================================================
+   3. ENCABEZADO
+========================================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    min-height: var(--header-height);
+
+    background-color: rgba(7, 27, 47, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    min-height: var(--header-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--white-color);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logo img {
+    width: auto;
+    height: 50px;
+
+    object-fit: contain;
+}
+
+.logo span {
+    color: var(--white-color);
+}
+
+
+/* =========================================================
+   4. MENÚ DE NAVEGACIÓN
+========================================================= */
+
+.navigation {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.navigation a {
+    display: block;
+
+    padding: 10px 12px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    border-radius: 7px;
+
+    transition:
+        color var(--transition),
+        background-color var(--transition);
+}
+
+.navigation a:hover,
+.navigation a.active {
+    color: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.menu-button {
+    display: none;
+
+    padding: 8px 12px;
+
+    color: var(--white-color);
+    background-color: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+
+    font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   5. HERO Y CARRUSEL
+========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 600px;
+
+    margin-top: var(--header-height);
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white-color);
+    background-color: var(--dark-color);
+}
+
+
+/* Cada imagen del carrusel */
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease-in-out,
+        visibility 1s ease-in-out;
+}
+
+
+/* Solamente se muestra la imagen activa */
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Control del tamaño de las imágenes */
+
+.slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* Capa oscura sobre las imágenes */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    background: linear-gradient(
+        90deg,
+        rgba(3, 18, 37, 0.9) 0%,
+        rgba(3, 18, 37, 0.65) 52%,
+        rgba(3, 18, 37, 0.4) 100%
+    );
+
+    pointer-events: none;
+}
+
+
+/* Contenido colocado sobre el carrusel */
+
+.hero-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(850px, calc(100% - 100px));
+
+    text-align: center;
+}
+
+.hero-content > span {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    color: #6ed0ff;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-content h1 {
+    margin-bottom: 20px;
+
+    color: var(--white-color);
+
+    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    line-height: 1.1;
+}
+
+.hero-content p {
+    max-width: 720px;
+
+    margin: 0 auto 25px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   6. BOTONES GENERALES
+========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    margin: 5px;
+    padding: 12px 24px;
+
+    color: var(--white-color);
+    background-color: var(--primary-color);
+
+    border: 2px solid var(--primary-color);
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    color: var(--white-color);
+    background-color: transparent;
+
+    border-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline:hover {
+    color: var(--dark-color);
+    background-color: var(--white-color);
+
+    border-color: var(--white-color);
+}
+
+
+/* =========================================================
+   7. BOTONES DEL CARRUSEL
+========================================================= */
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+
+    z-index: 4;
+
+    width: 48px;
+    height: 48px;
+
+    color: var(--white-color);
+    background-color: rgba(0, 0, 0, 0.35);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+
+    font-size: 1.3rem;
+
+    transform: translateY(-50%);
+
+    transition:
+        background-color var(--transition),
+        transform var(--transition);
+}
+
+.slider-button:hover {
+    background-color: var(--primary-light);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.slider-button.previous {
+    left: 22px;
+}
+
+.slider-button.next {
+    right: 22px;
+}
+
+
+/* =========================================================
+   8. INDICADORES DEL CARRUSEL
+========================================================= */
+
+.slider-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    transform: translateX(-50%);
+}
+
+.slider-dot {
+    width: 11px;
+    height: 11px;
+
+    padding: 0;
+
+    background-color: rgba(255, 255, 255, 0.5);
+
+    border: 0;
+    border-radius: 50%;
+
+    transition:
+        width var(--transition),
+        background-color var(--transition),
+        border-radius var(--transition);
+}
+
+.slider-dot.active {
+    width: 30px;
+
+    background-color: var(--white-color);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   9. SECCIONES GENERALES
+========================================================= */
+
+.section {
+    padding: 90px 0;
+}
+
+.section.light,
+.light {
+    background-color: var(--light-color);
+}
+
+.section h2 {
+    margin-bottom: 42px;
+
+    color: var(--dark-color);
+
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    line-height: 1.2;
+    text-align: center;
+}
+
+
+/* =========================================================
+   10. SECCIÓN NOSOTROS
+========================================================= */
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 45px;
+}
+
+.two-columns p {
+    margin-bottom: 18px;
+
+    color: var(--muted-color);
+
+    font-size: 1.05rem;
+}
+
+.about-image {
+    width: 100%;
+    height: 360px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: var(--border-radius);
+    box-shadow: var(--medium-shadow);
+}
+
+
+/* =========================================================
+   11. CUADRÍCULAS GENERALES
+========================================================= */
+
+.grid {
+    display: grid;
+    gap: 22px;
+}
+
+
+/* =========================================================
+   12. SERVICIOS
+========================================================= */
+
+.services {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.services article {
+    min-height: 200px;
+
+    padding: 28px;
+
+    background-color: var(--white-color);
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+
+    box-shadow: var(--small-shadow);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.services article:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--medium-shadow);
+}
+
+.services h3 {
+    margin-bottom: 10px;
+
+    color: var(--primary-color);
+
+    font-size: 1.25rem;
+}
+
+.services p {
+    color: var(--muted-color);
+}
+
+
+/* =========================================================
+   13. TECNOLOGÍAS
+========================================================= */
+
+.technologies {
+    color: var(--white-color);
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-dark),
+        var(--dark-color)
+    );
+}
+
+.technologies h2 {
+    color: var(--white-color);
+}
+
+.tech-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tech-grid span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 90px;
+
+    padding: 20px;
+
+    color: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+
+    font-weight: 700;
+    text-align: center;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition);
+}
+
+.tech-grid span:hover {
+    background-color: var(--primary-light);
+
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   14. GALERÍA DE PROYECTOS
+========================================================= */
+
+.gallery {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery img {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: var(--border-radius);
+    box-shadow: var(--small-shadow);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.gallery img:hover {
+    transform: scale(1.035);
+    box-shadow: var(--medium-shadow);
+}
+
+
+/* =========================================================
+   15. CONTACTO
+========================================================= */
+
+.contact {
+    text-align: center;
+
+    background-color: var(--light-color);
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+}
+
+.contact p {
+    margin: 9px 0;
+
+    color: var(--muted-color);
+
+    font-size: 1.05rem;
+}
+
+.whatsapp-link {
+    margin-top: 20px;
+
+    background-color: var(--whatsapp-color);
+    border-color: var(--whatsapp-color);
+}
+
+.whatsapp-link:hover {
+    background-color: #1db954;
+    border-color: #1db954;
+}
+
+
+/* =========================================================
+   16. PIE DE PÁGINA
+========================================================= */
+
+footer {
+    padding: 24px 20px;
+
+    color: rgba(255, 255, 255, 0.85);
+    background-color: var(--darker-color);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   17. BOTÓN FLOTANTE DE WHATSAPP
+========================================================= */
+
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 900;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white-color);
+    background-color: var(--whatsapp-color);
+
+    border: 3px solid var(--white-color);
+    border-radius: 50%;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition);
+}
+
+.whatsapp:hover {
+    background-color: #1db954;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   18. TABLETAS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .menu-button {
+        display: block;
+    }
+
+    .navigation {
+        position: absolute;
+        top: var(--header-height);
+        right: 0;
+        left: 0;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 18px;
+
+        background-color: var(--dark-color);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .navigation.open {
+        display: flex;
+    }
+
+    .navigation a {
+        padding: 13px 15px;
+    }
+
+    .hero {
+        height: 550px;
+    }
+
+    .two-columns {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .about-image {
+        height: 330px;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   19. TELÉFONOS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+        --header-height: 70px;
+    }
+
+    .container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .navbar {
+        min-height: var(--header-height);
+    }
+
+    .logo img {
+        height: 44px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .hero {
+        height: 500px;
+    }
+
+    .hero-content {
+        width: calc(100% - 50px);
+    }
+
+    .hero-content > span {
+        font-size: 0.72rem;
+        letter-spacing: 1.3px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.96rem;
+    }
+
+    .btn {
+        width: 100%;
+
+        margin: 5px 0;
+    }
+
+    .slider-button {
+        display: none;
+    }
+
+    .slider-dots {
+        bottom: 18px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .section h2 {
+        margin-bottom: 32px;
+
+        font-size: 2rem;
+    }
+
+    .services,
+    .tech-grid,
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 280px;
+    }
+
+    .gallery img {
+        height: 220px;
+    }
+
+    .whatsapp {
+        right: 14px;
+        bottom: 14px;
+
+        width: 54px;
+        height: 54px;
+    }
+}
+
+
+/* =========================================================
+   20. PANTALLAS MUY PEQUEÑAS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero {
+        height: 480px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   21. ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
